@@ -1,0 +1,13 @@
+[package]
+name = "rust-vben"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+axum = "0.6.20"
+serde = { version = "1.0.192", features = ["derive"] }
+tracing = "0.1.40"
+zino = { version = "0.14.4", features = ["axum"] }
+zino-core = { version = "0.15.4", features = ["orm-mysql"] }
+zino-derive = "0.12.4"
+zino-model = "0.12.4"

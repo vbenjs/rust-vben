@@ -1,0 +1,59 @@
+name = "Tags"
+
+[[endpoints]]
+path = "/tag/new"
+method = "POST"
+summary = "Creates a new tag"
+
+[endpoints.body]
+schema = "/tag/definition"
+
+[[endpoints]]
+path = "/tag/{tag_id}/delete"
+method = "POST"
+summary = "Deletes a tag by ID"
+
+[[endpoints]]
+path = "/tag/{tag_id}/update"
+method = "POST"
+summary = "Updates a tag by ID"
+
+[endpoints.body]
+schema = "tagInfo"
+
+[[endpoints]]
+path = "/tag/{tag_id}/view"
+method = "GET"
+summary = "Gets a tag by ID"
+
+[[endpoints]]
+path = "/tag/list"
+method = "GET"
+summary = "Finds a list of tags"
+
+[endpoints.query]
+category = { type = "string", description = "Tag category" }
+parent_id = { schema = "tagId" }
+
+[schemas.tagId]
+type = "integer"
+description = "Tag ID"
+
+[schemas.newTag]
+type = "object"
+required = ["name", "category"]
+name = { type = "string", description = "Tag name" }
+category = { type = "string", description = "Tag category" }
+parent_id = { type = "integer", description = "Optional parent tag" }
+
+[schemas.tagInfo]
+type = "object"
+name = { type = "string", description = "Tag name" }
+category = { type = "string", description = "Tag category" }
+parent_id = { type = "integer", description = "Optional parent tag" }
+
+[models.tag.status]
+translations = [
+    ["Active", "😄"],
+    ["Inactive", "😴"],
+]

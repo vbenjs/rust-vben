@@ -1,0 +1,54 @@
+# --env=prod
+
+name = "data-cube"
+version = "0.6.4"
+
+[dirs]
+uploads = "local/uploads"
+
+[debug]
+host = "127.0.0.1"
+port = 6070
+
+[main]
+host = "127.0.0.1"
+port = 6080
+
+[[standby]]
+host = "127.0.0.1"
+port = 6081
+tag = "portal"
+
+[[standby]]
+host = "127.0.0.1"
+port = 6082
+tag = "admin"
+
+[server]
+page-dir = "public"
+sse-route = "/sse"
+websocket-route = "/websocket"
+
+[database]
+namespace = "dc"
+
+[[mysql]]
+host = "127.0.0.1"
+port = 3306
+database = "data_cube"
+username = "root"
+password = "DI9IDtF0Le2ppYzflOaPpL4DvWo"
+
+[[sqlite]]
+database = "local/data/main.db"
+
+[tracing]
+filter = "warn"
+
+[metrics]
+exporter = "prometheus"
+host = "127.0.0.1"
+port = 9000
+
+[openapi]
+show-docs = true

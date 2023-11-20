@@ -1,0 +1,60 @@
+# --env=dev
+
+name = "data-cube"
+version = "0.6.4"
+
+[dirs]
+uploads = "local/uploads"
+
+[debug]
+host = "127.0.0.1"
+port = 6070
+
+[main]
+host = "127.0.0.1"
+port = 6080
+
+[[standby]]
+host = "127.0.0.1"
+port = 6081
+tag = "portal"
+
+[[standby]]
+host = "127.0.0.1"
+port = 6082
+tag = "admin"
+
+[server]
+page-dir = "public"
+sse-route = "/sse"
+websocket-route = "/websocket"
+
+[database]
+max-rows = 10000
+
+[[mysql]]
+host = "114.115.157.254"
+port = 3306
+database = "gf-vben"
+username = "gf-vben"
+password = "rdSWTt3dsLMTMHhE"
+
+[[sqlite]]
+database = "local/data/main.db"
+
+[tracing]
+filter = "info,sqlx=info,zino=trace,zino_core=trace"
+
+[metrics]
+exporter = "prometheus"
+host = "127.0.0.1"
+port = 9000
+
+[jwt]
+max-age = "20m"
+refresh-interval = "7d"
+
+[openapi]
+show-docs = true
+rapidoc-route = "/rapidoc"
+custom-html = "local/docs/rapidoc.html"
